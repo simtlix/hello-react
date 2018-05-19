@@ -90,7 +90,7 @@ class AlbumCardList extends Component {
 
 	render(){
 		return this.state.albums.map((album)=> 
-				<AlbumCard header={album.title._content} imageUrl={logo} title="GO" number={album.photos}/>
+				<AlbumCard key={album.id} header={album.title._content} imageUrl={logo} title="GO" number={album.photos}/>
 			);
 
 
