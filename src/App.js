@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AlbumCardList from './components/album-card-list'
+import AlbumPhotoList from './components/album-photo-list'
 
 
 
@@ -27,11 +28,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome {this.props.name}</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
         
-        <AlbumCardList />
+        
+        <AlbumPhotoList />
 
         
       </div>
