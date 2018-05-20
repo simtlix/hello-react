@@ -11,84 +11,38 @@ class AlbumCardList extends Component {
 	constructor(props){
 
 		super(props);
-		const albumsResponse = {
-	"photosets": {
-		"page": 1,
-		"pages": 1,
-		"perpage": 3,
-		"total": 3,
-		"photoset": [{
-			"id": "72157675030263626",
-			"primary": "22356251255",
-			"secret": "029f8e1281",
-			"server": "5718",
-			"farm": 6,
-			"photos": 2,
-			"videos": 0,
-			"title": {
-				"_content": "prueba"
-			},
-			"description": {
-				"_content": ""
-			},
-			"needs_interstitial": 0,
-			"visibility_can_see_set": 1,
-			"count_views": "7",
-			"count_comments": "0",
-			"can_comment": 0,
-			"date_create": "1476306576",
-			"date_update": "1476306577"
-		}, {
-			"id": "72157660115185712",
-			"primary": "22343185752",
-			"secret": "ed4f2a6f51",
-			"server": "582",
-			"farm": 1,
-			"photos": 3,
-			"videos": 0,
-			"title": {
-				"_content": "Album 1"
-			},
-			"description": {
-				"_content": ""
-			},
-			"needs_interstitial": 0,
-			"visibility_can_see_set": 1,
-			"count_views": "4",
-			"count_comments": "0",
-			"can_comment": 0,
-			"date_create": "1445426958",
-			"date_update": "1445427559"
-		}, {
-			"id": "72157660115126402",
-			"primary": "22343185752",
-			"secret": "ed4f2a6f51",
-			"server": "582",
-			"farm": 1,
-			"photos": 3,
-			"videos": 0,
-			"title": {
-				"_content": "Album 2"
-			},
-			"description": {
-				"_content": "Estes es un album"
-			},
-			"needs_interstitial": 0,
-			"visibility_can_see_set": 1,
-			"count_views": "5",
-			"count_comments": "0",
-			"can_comment": 0,
-			"date_create": "1445426832",
-			"date_update": "1445428332"
-		}]
-	},
-	"stat": "ok"
-}
-		this.state = {albums:albumsResponse.photosets.photoset};
+		
+		this.state = {albums:null};
 
 	}
 
+
+	  componentDidMount() { 
+	    axios.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=6e8a597cb502b7b95dbd46a46e25db8d&user_id=137290658%40N08&format=json&nojsoncallback=1') 
+			.then(({data}) =>  	
+				{   console.log(data);
+					this.setState({
+					albums:data.photosets.photoset
+					});
+				}
+			) 
+			.catch(function (error) { 	
+				console.log(error); 
+			}); 
+	  } 
+
+
 	render(){
+		if(!this.state.albums){
+			return (
+					<div>
+						<img src={logo} className="App-logo" alt="loading" />
+						<br/>
+						Loading...
+					</div>
+				);
+		}
+
 		return this.state.albums.map((album)=> 
 				<AlbumCard key={album.id} header={album.title._content} imageUrl={logo} title="GO" number={album.photos}/>
 			);
