@@ -18,7 +18,7 @@ class AlbumPhotoList extends Component {
 
 
 	  componentDidMount() { 
-	    axios.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=72157660115185712&user_id=137290658%40N08&format=json&nojsoncallback=1') 
+	    axios.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=72157660115185712&user_id=137290658%40N08&format=json&nojsoncallback=true') 
 			.then(({data}) =>  	
 				{   console.log(data.photoset);
 					this.setState({
