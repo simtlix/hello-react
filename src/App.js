@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AlbumCardList from './components/album-card-list'
 import AlbumPhotoList from './components/album-photo-list'
+import Clock from './Clock'
 
 
 
@@ -26,9 +27,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          
           <h1 className="App-title">Welcome {this.props.name}</h1>
+         
         </header>
-        
+        <Clock />
         
         <AlbumPhotoList />
 
