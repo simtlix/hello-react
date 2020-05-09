@@ -4,6 +4,7 @@ import './App.css';
 import AlbumCardList from './components/album-card-list'
 import AlbumPhotoList from './components/album-photo-list'
 import Clock from './Clock'
+import NameForm from './NameForm'
 
 
 
@@ -32,6 +33,7 @@ class App extends Component {
          
         </header>
         <Clock />
+        <NameForm />
         
         <AlbumPhotoList />
 
